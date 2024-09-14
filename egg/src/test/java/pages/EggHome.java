@@ -15,7 +15,7 @@ public class EggHome extends Driver {
     public EggHome(WebDriver driver, String url) {
         super(driver, url);
         PageFactory.initElements(driver, this);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @FindBy(xpath = "//a[contains(text(),'Iniciar sesión') or contains(text(),'Login')]")

@@ -1,5 +1,6 @@
+import java.time.Duration;
+
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.PageLoadStrategy;
@@ -8,11 +9,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
 
 import pages.EggHome;
 
-public class eggTest {
+public class elRashoTest {
+
     private EggHome home;
     private WebDriver driver;
 
@@ -25,20 +26,15 @@ public class eggTest {
             System.setProperty("webdriver.chrome.driver",
                     "/Users/lenin/Documents/Web-Automation/chromedriver-mac-x64/chromedriver");
         }
-        ChromeOptions options = new ChromeOptions();        
+        ChromeOptions options = new ChromeOptions();
         options.setPageLoadStrategy(PageLoadStrategy.EAGER);
-        
+
         driver = new ChromeDriver(options);
         home = new EggHome(driver, "https://egg.live/es/home");
     }
 
     @Test
-    public void testaTitle() {
-        Assertions.assertEquals("Egg", home.getTitle());
-    }
-
-    @Test
-    public void testbLogin() throws InterruptedException {
+    public void testRashando() throws InterruptedException {
         String mainWindowHandle = driver.getWindowHandle();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         home.getBtnLogin();
@@ -50,8 +46,9 @@ public class eggTest {
             }
         }
         home.setInputEmail("sclenins@gmail.com");
-        home.setInputPassword("-------");
-        home.setNextBtnLogin();
+        home.setInputPassword("sC3l3n1ns");
+        home.selectCurso("quality");
+        home.rashar("diego alfonso");
         Thread.sleep(10000);
     }
 
