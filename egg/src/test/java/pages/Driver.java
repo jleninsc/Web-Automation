@@ -15,8 +15,16 @@ public class Driver {
         return this.driver.getTitle();
     }
 
-    public void quit(){
-        this.driver.quit();
+    public void quit() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+    public void deleteAllCookies() {
+        if (driver != null) {
+            driver.manage().deleteAllCookies();
+        }
     }
 
 }
