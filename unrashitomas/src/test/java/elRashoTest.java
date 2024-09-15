@@ -47,12 +47,12 @@ public class elRashoTest {
             }
         }
         home.setInputEmail("sclenins@gmail.com");
-        home.setInputPassword("-----");
+        home.setInputPassword("------");
         Thread.sleep(10000);
         home.selectCurso("quality");
         Thread.sleep(20000);
-        home.rashar("diego");
-        Thread.sleep(10000);
+        home.rashar("lenin");
+        Thread.sleep(20000);
     }
 
     @AfterEach
