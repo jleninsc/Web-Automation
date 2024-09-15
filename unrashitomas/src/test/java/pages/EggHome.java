@@ -76,13 +76,12 @@ public class EggHome extends Driver {
     @FindBy(xpath = "//div[@style='display: flex; justify-content: space-between; align-items: center; gap: 1ch; margin-bottom: 21px;']")
     private List<WebElement> listRashables;
 
-    public void rashar(String name) {
+    public void rashar(String friend) {
         wait.until(ExpectedConditions.visibilityOfAllElements(listRashables));
         for (WebElement rashable : listRashables) {
-            WebElement rashableElement = rashable.findElement(By.xpath(".//span[@style='flex-grow: 2; font-size: 13px;']"));
-            wait.until(ExpectedConditions.visibilityOf(rashableElement));
-            System.out.println("User: " + rashableElement.getAttribute("textContent"));
-            if (rashableElement.getText().toLowerCase().contains(name)) {
+            WebElement rashableFriend = rashable.findElement(By.xpath(".//span[@style='flex-grow: 2; font-size: 13px;']"));
+            wait.until(ExpectedConditions.visibilityOf(rashableFriend));
+            if (rashableFriend.getText().toLowerCase().contains(friend)) {
                 WebElement btnRasho = rashable.findElement(By.tagName("button"));
                 wait.until(ExpectedConditions.elementToBeClickable(btnRasho));
                 btnRasho.click();
