@@ -31,6 +31,7 @@ public class elRashoTest {
 
         driver = new ChromeDriver(options);
         home = new EggHome(driver, "https://egg.live/es/home");
+        home.maximize();
     }
 
     @Test
@@ -47,8 +48,10 @@ public class elRashoTest {
         }
         home.setInputEmail("sclenins@gmail.com");
         home.setInputPassword("sC3l3n1ns");
+        Thread.sleep(10000);
         home.selectCurso("quality");
-        home.rashar("diego alfonso");
+        Thread.sleep(20000);
+        home.rashar("diego");
         Thread.sleep(10000);
     }
 

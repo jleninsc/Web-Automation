@@ -21,6 +21,12 @@ public class Driver {
         }
     }
 
+    public void maximize(){
+        if (driver != null) {
+            driver.manage().window().maximize();
+        }
+    }
+
     public void deleteAllCookies() {
         if (driver != null) {
             driver.manage().deleteAllCookies();
