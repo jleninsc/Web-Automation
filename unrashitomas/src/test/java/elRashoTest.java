@@ -36,18 +36,18 @@ public class elRashoTest {
 
     @Test
     public void testRashando() throws InterruptedException {
-        String mainWindowHandle = driver.getWindowHandle();
+        String mainWindow = driver.getWindowHandle();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         home.getBtnLogin();
         wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        for (String windowHandle : driver.getWindowHandles()) {
-            if (!windowHandle.equals(mainWindowHandle)) {
-                driver.switchTo().window(windowHandle);
+        for (String window : driver.getWindowHandles()) {
+            if (!window.equals(mainWindow)) {
+                driver.switchTo().window(window);
                 break;
             }
         }
         home.setInputEmail("sclenins@gmail.com");
-        home.setInputPassword("------");
+        home.setInputPassword("-----");
         Thread.sleep(10000);
         home.selectCurso("quality");
         Thread.sleep(20000);
