@@ -1,5 +1,3 @@
-import java.time.Duration;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,14 +5,12 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import pages.EggHome;
+import pages.DropDownsHome;
 
-public class elRashoTest {
+public class dropdownsTest {
 
-    private EggHome home;
+    private DropDownsHome home;
     private WebDriver driver;
 
     @BeforeEach
@@ -26,34 +22,17 @@ public class elRashoTest {
             System.setProperty("webdriver.chrome.driver",
                     "/Users/lenin/Documents/Web-Automation/chromedriver-mac-x64/chromedriver");
         }
+
         ChromeOptions options = new ChromeOptions();
         options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 
         driver = new ChromeDriver(options);
-        home = new EggHome(driver, "https://egg.live/es/home");
+        home = new DropDownsHome(driver, "https://www.w3schools.com/js/tryit.asp?filename=tryjs_prompt");
         home.maximize();
     }
 
     @Test
-    public void testRashando() throws InterruptedException {
-        String mainWindow = driver.getWindowHandle();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        home.getBtnLogin();
-        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        for (String window : driver.getWindowHandles()) {
-            if (!window.equals(mainWindow)) {
-                driver.switchTo().window(window);
-                break;
-            }
-        }
-        home.setInputEmail("sclenins@gmail.com");
-        home.setInputPassword("sC3l3n1ns");
-        Thread.sleep(10000);
-        home.selectCurso("quality");
-        Thread.sleep(20000);
-        home.rashar("lenin");
-        Thread.sleep(20000);
-    }
+    
 
     @AfterEach
     public void tearDown() {

@@ -1,5 +1,3 @@
-import java.time.Duration;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,14 +5,12 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import pages.EggHome;
+import pages.w3SchoolsHome;
 
-public class elRashoTest {
+public class w3schoolsTest {
 
-    private EggHome home;
+    private w3SchoolsHome home;
     private WebDriver driver;
 
     @BeforeEach
@@ -26,33 +22,24 @@ public class elRashoTest {
             System.setProperty("webdriver.chrome.driver",
                     "/Users/lenin/Documents/Web-Automation/chromedriver-mac-x64/chromedriver");
         }
+
         ChromeOptions options = new ChromeOptions();
         options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 
         driver = new ChromeDriver(options);
-        home = new EggHome(driver, "https://egg.live/es/home");
+        home = new w3SchoolsHome(driver, "https://www.w3schools.com/js/tryit.asp?filename=tryjs_prompt");
         home.maximize();
     }
 
     @Test
-    public void testRashando() throws InterruptedException {
-        String mainWindow = driver.getWindowHandle();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        home.getBtnLogin();
-        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        for (String window : driver.getWindowHandles()) {
-            if (!window.equals(mainWindow)) {
-                driver.switchTo().window(window);
-                break;
-            }
-        }
-        home.setInputEmail("sclenins@gmail.com");
-        home.setInputPassword("sC3l3n1ns");
-        Thread.sleep(10000);
-        home.selectCurso("quality");
-        Thread.sleep(20000);
-        home.rashar("lenin");
-        Thread.sleep(20000);
+    public void alertsTest() throws InterruptedException {
+        home.goToiFrame();
+        Thread.sleep(3000);
+        home.clicTryIt();
+        Thread.sleep(3000);
+        home.sendToAlert("Lenin");
+        Thread.sleep(4000);
+        home.returnToMain();
     }
 
     @AfterEach
@@ -60,4 +47,5 @@ public class elRashoTest {
         home.deleteAllCookies();
         home.quit();
     }
+
 }
