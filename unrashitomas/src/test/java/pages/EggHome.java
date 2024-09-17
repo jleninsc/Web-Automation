@@ -39,7 +39,6 @@ public class EggHome extends Driver {
     }
 
     @FindBy(id = "password")
-
     private WebElement setInputPassword;
 
     public void setInputPassword(String password) {
