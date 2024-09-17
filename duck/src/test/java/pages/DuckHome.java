@@ -40,7 +40,6 @@ public class DuckHome extends Driver {
         try {
             wait.until(ExpectedConditions.visibilityOfAllElements(listOptions));
             for (WebElement option : listOptions) {
-                System.out.println("Option: " + option.getText());
                 if (option.getText().equalsIgnoreCase(searchOption)) {
                     option.click();
                     return true;
