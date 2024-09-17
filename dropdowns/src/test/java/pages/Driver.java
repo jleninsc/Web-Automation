@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Driver {
 
-    protected WebDriver driver;
+    private WebDriver driver;
 
     public Driver(WebDriver driver, String url) {
         this.driver = driver;

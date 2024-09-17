@@ -23,22 +23,37 @@ public class w3SchoolsHome extends Driver {
     @FindBy(css = "iframe#iframeResult")
     private WebElement goToiFrame;
 
-    public void goToiFrame() {
-        driver.switchTo().frame(goToiFrame);
+    public boolean goToiFrame() {
+        try {
+            driver.switchTo().frame(goToiFrame);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @FindBy(xpath = "//button[text()='Try it']")
     private WebElement btnTryIt;
 
-    public void clicTryIt() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnTryIt));
-        this.btnTryIt.click();
+    public boolean clicTryIt() {
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(btnTryIt));
+            this.btnTryIt.click();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    public void sendToAlert(String name) {
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        alert.sendKeys(name);
-        alert.accept();
+    public boolean sendToAlert(String name) {
+        try {
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            alert.sendKeys(name);
+            alert.accept();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void returnToMain() {

@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.PageLoadStrategy;
@@ -33,11 +34,10 @@ public class w3schoolsTest {
 
     @Test
     public void alertsTest() throws InterruptedException {
-        home.goToiFrame();
-        Thread.sleep(3000);
-        home.clicTryIt();
-        Thread.sleep(3000);
-        home.sendToAlert("Lenin");
+        Assertions.assertTrue(home.goToiFrame(), "No se pudo acceder al iframe correctamente.");
+        Assertions.assertTrue(home.clicTryIt(), "El botón 'Try it' no fue clicado correctamente.");
+        Assertions.assertTrue(home.sendToAlert("Lenin"),
+                "El nombre no fue enviado al alert correctamente o el alert no fue aceptado.");
         Thread.sleep(4000);
         home.returnToMain();
     }
