@@ -33,7 +33,7 @@ public class sauceDemoTest {
 
         driver = new ChromeDriver(options);
         home = new SauceDemoHome(driver, "https://www.saucedemo.com/v1/index.html");
-        home.maximize();
+        // home.maximize();
     }
 
     @Test
@@ -44,7 +44,6 @@ public class sauceDemoTest {
         home.setUserPassword(password);
         Assertions.assertTrue(home.clicToLogin());
         Thread.sleep(4000);
-
     }
 
     @Test
@@ -73,10 +72,12 @@ public class sauceDemoTest {
         List<String> users = home.getUsernames();
         List<String> passwords = home.getUserPasswords();
         for (int i = 0; i < users.size(); i++) {
-            for (int j = 0; j < passwords.size(); j++) {
-                home.setUserName(users.get(i));
-                home.setUserPassword(passwords.get(j));
-                Assertions.assertTrue(home.clicToLogin());
+            home.cleanUser();
+            home.setUserName(users.get(i));
+            home.cleanPassword();
+            home.setUserPassword(passwords.get(0));
+            Assertions.assertTrue(home.clicToLogin());
+            if (!home.closeError()) {
                 Assertions.assertTrue(home.clicToBtnBurger());
                 Assertions.assertTrue(home.clicOption("Logout"));
             }

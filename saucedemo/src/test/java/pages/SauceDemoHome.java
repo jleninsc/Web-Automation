@@ -19,7 +19,7 @@ public class SauceDemoHome extends Driver {
     public SauceDemoHome(WebDriver driver, String url) {
         super(driver, url);
         PageFactory.initElements(driver, this);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @FindBy(id = "login_credentials")
@@ -83,6 +83,16 @@ public class SauceDemoHome extends Driver {
         wait.until(ExpectedConditions.visibilityOf(userpassword));
         this.userpassword.click();
         this.userpassword.sendKeys(password);
+    }
+
+    public void cleanUser(){
+        wait.until(ExpectedConditions.visibilityOf(username));
+        this.username.clear();
+    }
+
+    public void cleanPassword(){
+        wait.until(ExpectedConditions.visibilityOf(userpassword));
+        this.userpassword.clear();
     }
 
     @FindBy(id = "login-button")
