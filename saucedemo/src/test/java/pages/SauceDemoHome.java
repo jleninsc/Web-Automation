@@ -31,7 +31,7 @@ public class SauceDemoHome extends Driver {
         if (index >= 0 && index < usernames.size()) {
             return usernames.get(index);
         } else {
-            throw new IndexOutOfBoundsException("Índice fuera de rango. El tamaño de la lista es " + usernames.size());
+            throw new IndexOutOfBoundsException("Índice fuera de rango.");
         }
     }
 

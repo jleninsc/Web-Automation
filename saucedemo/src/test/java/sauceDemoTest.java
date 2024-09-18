@@ -77,6 +77,7 @@ public class sauceDemoTest {
             home.cleanPassword();
             home.setUserPassword(passwords.get(0));
             Assertions.assertTrue(home.clicToLogin());
+            Thread.sleep(4000);
             if (!home.closeError()) {
                 Assertions.assertTrue(home.clicToBtnBurger());
                 Assertions.assertTrue(home.clicOption("Logout"));
